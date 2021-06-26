@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- <link rel="stylesheet" href="css/perfect-scrollbar.css"> -->
+    <title>Live Karaoke</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.webrtc-experiment.com/MediaStreamRecorder.js"> </script>
+
+</head>
+
+<body>
+    <noscript>
+        This website uses javascript to function. Please enable javascript to continue.
+    </noscript>
+
+    <div class="container">
+
+        <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+            <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <img src="..." class="rounded me-2" alt="...">
+                    <strong class="me-auto">Note</strong>
+                    <small>2 mins ago</small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    Click on any of the song cards & start recording.
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">001-Channa-Mereya.mp3</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <audio controls style="width:100%">
+                            <source src="https://www.w3schools.com/TagS/horse.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <!-- <button type="button" class="btn btn-primary">Understood</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="songs-container">
+
+            <div class="songs-header">
+                <a href=""><img src="assets/images/karaoke-icon.jpg" alt=""></a>
+                <a href="">
+                    <p>Karaoke Live</p>
+                </a>
+            </div>
+
+            <div class="song-search-container">
+                <div class="input-group mb-3 song-search-input">
+                    <input type="text" class="form-control" placeholder="Paste youtube video link"
+                        aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <button class="btn btn-outline-secondary custom-play" type="button" id="button-addon2">Play</button>
+                </div>
+            </div>
+
+            <div class="songs-card-container">
+                <div id="custom-song-card" class="song-card">
+                    <div class="song-card-image"><img
+                            src="https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg"
+                            alt="">
+                    </div>
+                    <div class="song-card-text">Custom</div>
+                </div>
+
+                <div class="song-card">
+                    <div class="song-card-image"><img
+                            src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/201611/ranbirash-story_647_110316025713.jpg?size=770:433"
+                            alt="">
+                    </div>
+                    <div class="song-card-text">Ae Dil Hai Mushkil</div>
+                </div>
+
+                <div class="song-card">
+                    <div class="song-card-image"><img
+                            src="https://a10.gaanacdn.com/images/albums/58/1765258/crop_480x480_1765258.jpg" alt="">
+                    </div>
+                    <div class="song-card-text">Bulleya</div>
+                </div>
+
+                <div class="song-card">
+                    <div class="song-card-image"><img src="assets/images/channa-mereya.webp" alt=""></div>
+                    <div class="song-card-text">Channa Mereya</div>
+                </div>
+
+                <div class="song-card">
+                    <div class="song-card-image"><img
+                            src="https://static.india.com/wp-content/uploads/2015/12/dilwales-song-janam-janam.jpg"
+                            alt=""></div>
+                    <div class="song-card-text">Janam Janam</div>
+                </div>
+
+                <div class="song-card">
+                    <div class="song-card-image"><img
+                            src="https://hindilyricsbox.com/wp-content/uploads/2020/03/Kaise-Hua-Lyrics-In-Hindi-Kabir-Singh.jpg"
+                            alt=""></div>
+                    <div class="song-card-text">Kaise Hua</div>
+                </div>
+
+                <div class="song-card">
+                    <div class="song-card-image"><img
+                            src="https://i1.sndcdn.com/artworks-CPr8ZFk97ZdbGz4m-dTpzEQ-t500x500.jpg"
+                            alt=""></div>
+                    <div class="song-card-text">O Rangrez</div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="main-container">
+            <nav class="nav nav-pills flex-column flex-sm-row main-options">
+                <a class="flex-sm-fill text-sm-center nav-link active" id="karaoke" aria-current="page"
+                    href="#">Karaoke</a>
+                <a class="flex-sm-fill text-sm-center nav-link" id="recordings" href="#">My Recordings</a>
+            </nav>
+
+            <div class="karaoke-container">
+                <iframe id="video-player" 
+                    src="https://www.youtube.com/embed/z4c14QYnBoU?autoplay=1&mute=1&controls=0"
+                    title="YouTube video player" frameborder="0" allow="autoplay; encrypted-media; loop"
+                    allowfullscreen></iframe>
+
+
+                <div class="recording-controls">
+                    <button type="button" class="btn btn-primary" id="start-record" disabled>Start Recording</button>
+                    <button type="button" class="btn btn-warning" id="pause-record" hidden>Pause Recording</button>
+                    <button type="button" class="btn btn-danger" id="stop-record" hidden>Stop Recording</button>
+                </div>
+            </div>
+
+
+            <div class="recordings-container hidden">
+                <table class="table table-success table-striped">
+                    <thead>
+                        <th>#</th>
+                        <th>Recording</th>
+                        <th>Created</th>
+                        <th></th>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>001 Channa Mereya</td>
+                            <td>25th June, 2021</td>
+                            <td>
+                                <button id="listen" type="button" class="btn btn-success" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop">
+                                    Listen
+                                </button>
+                                <!-- <button id="configure" type="button" class="btn btn-warning">
+                                    Configure
+                                </button> -->
+                                <button type="button" class="btn btn-danger">
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>2</td>
+                            <td>002 Bulleya</td>
+                            <td>25th June, 2021</td>
+                            <td>
+                                <button type="button" class="btn btn-success">
+                                    Listen
+                                </button>
+                                <!-- <button type="button" class="btn btn-warning">
+                                    Configure
+                                </button> -->
+                                <button type="button" class="btn btn-danger">
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <div class="lyrics-container">
+            <div class="lyrics-header">
+                <h1>Song Name</h1>
+                <h1>(Lyrics)</h1>
+            </div>
+
+            <div class="lyrics-text">
+
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/data/lyrics.js"></script>
+    <script src="assets/data/songsList.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/audioRecorder.js"></script>
+    <script src="js/mergeAudios.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,272 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: #333;
+    font-size: 28px;
+}
+
+.container {
+    height: 100vh;
+    width: 100vw;
+    /* display: flex;
+    margin: 0; */
+}
+
+.main-container {
+    height: 100vh;
+    width: 50vw;
+    position: absolute;
+    top: 0;
+    left: calc((100vw - 50vw) / 2);
+}
+
+.main-options {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    background-color: #888;
+}
+
+.main-options a {
+    height: 100%;
+    width: 50%;
+    color: #fff;
+}
+
+.nav-pills .nav-link {
+    border-radius: 10px;
+}
+
+.karaoke-container {
+    height: 90%;
+    width: 100%;
+}
+
+#video-player {
+    position: absolute;
+    height: 50%;
+    width: 80%;
+    top: 25%;
+    left: calc((50vw - 80%) / 2);
+    pointer-events: none;
+}
+
+.audio-recorder {
+    display: none;
+}
+
+.recording-controls {
+    position: absolute;
+    height: 4rem;
+    width: 10rem;
+    top: 80%;
+    left: calc((100% - 10rem) / 2);
+    font-size: 18px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.recording-controls button {
+    margin: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.mic {
+    /* animation: inOut 1s infinite; */
+}
+
+.recording-controls button:hover {
+    cursor: pointer;
+}
+
+.inOut-animation {
+    animation: inOut 1s infinite;
+}
+
+@keyframes inOut {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.recordings-container {
+    height: 90%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.recordings-container table {
+    margin-top: 50px;
+    /* height: 80%; */
+    width: 80%;
+    font-size: 18px;
+}
+
+.lyrics-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 25vw;
+    background-color: #fff;
+}
+
+.lyrics-header {
+    text-align: center;
+    height: 15%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgb(80, 80, 145);
+    color: #fff;
+}
+
+.lyrics-header h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.lyrics-text {
+    padding: 10px;
+    height: 85%;
+    width: 100%;  
+    text-align: center;
+    overflow-x: hidden; 
+    overflow-y: auto;
+    font-size: 18px;
+}
+
+.songs-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 25vw;
+    height: 100%;
+    background-color: #000;
+}
+
+.songs-header a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.songs-header {
+    height: 10%;
+    width: 100%;
+    color: #fff;
+    padding-top: 15px;
+    padding-left: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.songs-header img {
+    background-color: #fff;
+    height: 3rem;
+    width: 2rem;
+    margin-right: 20px;
+}
+
+.songs-header p {
+    margin: 0;
+}
+
+.song-search-container {
+    height: 10%;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.song-search-input {
+    width: 80%;
+}
+
+.song-search-input button {
+    background-color: #0d6efd;
+    color: #000;
+}
+
+.songs-card-container {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.song-card {
+    height: 25%;
+    width: 40%;
+    border: 4px solid #444;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin: 10px;
+}
+
+.song-card:hover {
+    cursor: pointer;
+    border: 4px solid #fff;
+}
+
+.song-card.selected {
+    border: 4px solid #fff;
+}
+
+.song-card-image {
+    height: 80%;
+    width: 80%;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.song-card-image img {
+    height: 100%;
+    width: 100%;
+}
+
+.song-card-text {
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Media Queries */
+/* 
+@media screen and (max-width: 600px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+} */
