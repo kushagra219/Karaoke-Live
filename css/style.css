@@ -1,3 +1,5 @@
+/* General CSS */
+
 * {
     box-sizing: border-box;
 }
@@ -7,6 +9,8 @@ body {
     background-color: #333;
     font-size: 28px;
 }
+
+/* Container CSS */
 
 .container {
     height: 100vh;
@@ -78,10 +82,6 @@ body {
     font-weight: bold;
 }
 
-.mic {
-    /* animation: inOut 1s infinite; */
-}
-
 .recording-controls button:hover {
     cursor: pointer;
 }
@@ -108,13 +108,24 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .recordings-container table {
     margin-top: 50px;
     /* height: 80%; */
-    width: 80%;
+    width: 90%;
     font-size: 18px;
+}
+
+.recording-configure-btn {
+    display: inline-block;
+}
+
+.recording-configure-btn:hover {
+    transform: scale(1.1);
+    cursor: pointer;
 }
 
 .lyrics-container {
@@ -145,9 +156,9 @@ body {
 .lyrics-text {
     padding: 10px;
     height: 85%;
-    width: 100%;  
+    width: 100%;
     text-align: center;
-    overflow-x: hidden; 
+    overflow-x: hidden;
     overflow-y: auto;
     font-size: 18px;
 }
@@ -263,6 +274,7 @@ body {
 }
 
 /* Media Queries */
+
 /* 
 @media screen and (max-width: 600px) {
     .container {
