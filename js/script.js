@@ -155,14 +155,13 @@ navigator.mediaDevices.getUserMedia({ audio: true })
         }
 
         mediaRecorder.onstop = function (e) {
-            let audioData = new Blob(chunks, { 'type': 'audio/mp3;' });
+            let blob = new Blob(chunks, { 'type': 'audio/mp3;' });
             chunks = [];
-            let audioSrc = window.URL.createObjectURL(audioData);
             let diff = endRecordingTime - startRecordingTime;
             let minutes = parseInt(diff / 60);
             let seconds = diff % 60;
-            console.log(`${minutes}:${seconds}`);
-            saveRecording(audioSrc, currentSong, "00:00", `${minutes}:${seconds}`);
+            // console.log(`${minutes}:${seconds}`);
+            saveRecording(blob, currentSong, "00:00", `${minutes}:${seconds}`);
             alert("Recording saved in My Recordings");
             // downloadFile(audioSrc);
         }

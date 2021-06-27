@@ -58,7 +58,7 @@ function viewMedia() {
             <td>${cursor.value.title}</td>
             <td>${cursor.value.date} ${cursor.value.time}</td>
             <td>
-                <button type="button" data-id="${cursor.value.rId}" class="btn btn-success recording-listen-btn" data-bs-toggle="modal"
+                <button type="button" data-src="${window.URL.createObjectURL(cursor.value.media)}" data-id="${cursor.value.rId}" class="btn btn-success recording-listen-btn" data-bs-toggle="modal"
                 data-bs-target="#staticBackdrop">
                     Listen
                 </button>
@@ -74,16 +74,6 @@ function viewMedia() {
             cursor.continue();
         }
 
-        else if (counter == 0) {
-            let tr = document.createElement("tr");
-            tr.innerHTML = `<td></td>
-            <td>No Recordings available!</td>
-            <td></td>
-            <td></td>`;
-
-            tbody.append(tr);
-        }
-
         let listenBtn = document.querySelector(".recording-listen-btn");
         let deleteBtn = document.querySelector(".recording-delete-btn");
 
@@ -95,7 +85,8 @@ function viewMedia() {
         })
 
         listenBtn.addEventListener('click', function (e) {
-            let modal = $(`
+            let div = document.createElement("div");
+            div.innerHTML = `
                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
                     aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -106,7 +97,7 @@ function viewMedia() {
                             </div>
                             <div class="modal-body">
                                 <audio controls style="width:100%">
-                                    <source src="https://www.w3schools.com/TagS/horse.mp3" type="audio/mpeg">
+                                    <source src="${e.currentTarget.getAttribute("data-src")}" type="audio/mpeg">
                                     Your browser does not support the audio element.
                                 </audio>
                             </div>
@@ -116,8 +107,8 @@ function viewMedia() {
                             </div>
                         </div>
                     </div>
-                </div>`);
-            body.appendChild(modal[0]);
+                </div>`;
+            body.appendChild(div);
 
             let closeBtn = $("#close-modal-btn");
             closeBtn.click(function () {
@@ -132,5 +123,4 @@ function deleteMediaFromDB(rId) {
     let recordingsObjectStore = tx.objectStore("recordings");
     recordingsObjectStore.delete(Number(rId))
     localStorage.setItem("totalRecordings", localStorage.getItem("totalRecordings") - 1);
-    viewMedia();
 }
