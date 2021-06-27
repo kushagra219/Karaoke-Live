@@ -43,7 +43,7 @@ $(".custom-play").click(function (e) {
         changeSongTo(customVideoId);
         changeLyrics("Custom Song");
         playPushed = true;
-        // $("#custom-song-card").click();
+        $("#custom-song-card").click();
     } else {
         alert("Youtube link Invalid!");
     }
@@ -103,7 +103,7 @@ navigator.mediaDevices.getUserMedia({ audio: true })
                 alert("Error! Enter youtube link and push play to use this card");
                 return;
             }
-            else if (e.currentTarget == "Custom") {
+            else if (e.currentTarget.innerText == "Custom") {
                 playPushed = false;
             }
             else {
