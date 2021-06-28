@@ -2,7 +2,7 @@
 
 <img src="https://img.shields.io/github/issues/kushagra219/Karaoke-Live"> <img src="https://img.shields.io/github/stars/kushagra219/Karaoke-Live?color=green&style=social"> <img src="https://img.shields.io/badge/developed%20by-Kushagra%20Garg-blue"> <img src="https://img.shields.io/github/repo-size/kushagra219/Karaoke-Live"> 
 
-<strong>Techstack</strong> - HTML, CSS, Bootstrap, Javascipt, Web APIs, IndexedDb
+<strong>Techstack</strong> - HTML, CSS, Bootstrap, Javascript, Web APIs, IndexedDb
 
 ## Features
 * Project submitted under <strong>Pep Hack-2</strong>
